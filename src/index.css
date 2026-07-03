@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: #0A1F16;
+  color: #F3F6F1;
+}
+
+.field-input {
+  @apply w-full bg-[#163524] border border-[#224030] text-[#F3F6F1] rounded-md px-3 py-2.5 font-mono text-sm outline-none focus:border-[#A8E063] transition-colors placeholder:text-[#5C7466];
+}
+
+.font-heading {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
