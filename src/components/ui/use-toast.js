@@ -4,21 +4,15 @@ let toastId = 0;
 const listeners = new Set();
 
 export function useToast() {
-  const [toasts, setToasts] = useState([]);
-
-  const addListener = useCallback((listener) => {
-    listeners.add(listener);
-    return () => listeners.delete(listener);
-  }, []);
-
   const toast = useCallback((props) => {
     const id = toastId++;
-    const newToast = { id, ...props };
-    listeners.forEach(listener => listener(newToast));
+    const notification = { id, ...props, open: true };
+    listeners.forEach(listener => listener(notification));
+    
     setTimeout(() => {
-      setToasts(prev => prev.filter(t => t.id !== id));
+      listeners.forEach(listener => listener({ ...notification, open: false }));
     }, 3000);
   }, []);
 
-  return { toast, toasts };
+  return { toast };
 }
