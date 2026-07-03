@@ -1,9 +1,24 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
+
+let toastId = 0;
+const listeners = new Set();
 
 export function useToast() {
-  const toast = ({ title, description, variant = 'default' }) => {
-    console.log(`[${variant}] ${title}${description ? ': ' + description : ''}`);
-  };
+  const [toasts, setToasts] = useState([]);
 
-  return { toast };
+  const addListener = useCallback((listener) => {
+    listeners.add(listener);
+    return () => listeners.delete(listener);
+  }, []);
+
+  const toast = useCallback((props) => {
+    const id = toastId++;
+    const newToast = { id, ...props };
+    listeners.forEach(listener => listener(newToast));
+    setTimeout(() => {
+      setToasts(prev => prev.filter(t => t.id !== id));
+    }, 3000);
+  }, []);
+
+  return { toast, toasts };
 }
