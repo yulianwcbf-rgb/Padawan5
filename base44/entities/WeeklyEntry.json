@@ -1,0 +1,109 @@
+{
+  "name": "WeeklyEntry",
+  "type": "object",
+  "properties": {
+    "assessor": {
+      "type": "string",
+      "description": "Nome do assessor"
+    },
+    "week_start": {
+      "type": "string",
+      "format": "date",
+      "description": "Data de início da semana"
+    },
+    "captacao": {
+      "type": "number",
+      "default": 0,
+      "description": "Captação total em R$"
+    },
+    "consorcio": {
+      "type": "number",
+      "default": 0,
+      "description": "Consórcio em R$"
+    },
+    "reuniao_agendada": {
+      "type": "number",
+      "default": 0,
+      "description": "Quantidade de reuniões agendadas"
+    },
+    "reuniao_realizada": {
+      "type": "number",
+      "default": 0,
+      "description": "Quantidade de reuniões realizadas"
+    },
+    "r1": {
+      "type": "number",
+      "default": 0,
+      "description": "Quantidade de R1"
+    },
+    "r2": {
+      "type": "number",
+      "default": 0,
+      "description": "Quantidade de R2"
+    },
+    "reuniao_ip": {
+      "type": "number",
+      "default": 0,
+      "description": "Quantidade de reuniões IP"
+    },
+    "reuniao_ap": {
+      "type": "number",
+      "default": 0,
+      "description": "Quantidade de reuniões AP"
+    },
+    "pa": {
+      "type": "number",
+      "default": 0,
+      "description": "PA em R$"
+    },
+    "receita_escritorio": {
+      "type": "number",
+      "default": 0,
+      "description": "Receita Escritório em R$"
+    },
+    "recomendacoes": {
+      "type": "number",
+      "default": 0,
+      "description": "Quantidade de recomendações"
+    },
+    "contas": {
+      "type": "number",
+      "default": 0,
+      "description": "Novas contas abertas na semana"
+    },
+    "contas_totais": {
+      "type": "number",
+      "default": 0,
+      "description": "Número total de contas"
+    },
+    "patrimonio_liquido": {
+      "type": "number",
+      "default": 0,
+      "description": "Patrimônio Líquido Total em R$"
+    },
+    "total_points": {
+      "type": "number",
+      "default": 0,
+      "description": "Pontuação total calculada"
+    },
+    "breakdown": {
+      "type": "array",
+      "description": "Detalhamento da pontuação",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "pts": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "assessor",
+    "week_start"
+  ]
+}
